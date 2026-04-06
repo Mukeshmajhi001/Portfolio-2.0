@@ -1,0 +1,65 @@
+# Portfolio 2.0 — Root .htaccess
+Options -Indexes
+ServerSignature Off
+
+# PHP settings
+php_flag display_errors Off
+php_value error_reporting 0
+
+# Custom 404
+ErrorDocument 404 /404.php
+
+# Rewrite engine
+RewriteEngine On
+RewriteBase /
+
+# Block access to sensitive files
+RewriteRule ^config/ - [F,L]
+RewriteRule ^\.env$ - [F,L]
+RewriteRule ^composer\.(json|lock)$ - [F,L]
+
+# Redirect www to non-www (optional, update domain)
+# RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+# RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+
+# Force HTTPS (uncomment when SSL is enabled)
+# RewriteCond %{HTTPS} off
+# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# Route unknown paths to 404
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/(index\.php|contact\.php|assets/|uploads/)
+RewriteRule ^(.*)$ 404.php [L]
+
+# Security headers
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set X-XSS-Protection "1; mode=block"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# Prevent access to uploads of non-image files
+<FilesMatch "\.(php|phtml|php3|php4|php5|phar)$">
+  <If "%{REQUEST_URI} =~ m#^/uploads/#">
+    Order Allow,Deny
+    Deny from all
+  </If>
+</FilesMatch>
+
+# Gzip compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript text/javascript application/json
+</IfModule>
+
+# Browser caching
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png  "access plus 1 month"
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType text/css   "access plus 1 week"
+  ExpiresByType application/javascript "access plus 1 week"
+</IfModule>

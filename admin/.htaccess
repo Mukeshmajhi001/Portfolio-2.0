@@ -1,0 +1,19 @@
+# Admin folder protection
+Options -Indexes
+
+# Block direct access to non-PHP files from outside
+<FilesMatch "\.(php)$">
+  Order Allow,Deny
+  Allow from all
+</FilesMatch>
+
+# Block access to partials folder directly
+RewriteEngine On
+RewriteRule ^partials/ - [F,L]
+
+# Prevent clickjacking on admin
+<IfModule mod_headers.c>
+  Header set X-Frame-Options "DENY"
+  Header set Cache-Control "no-store, no-cache, must-revalidate"
+  Header set Pragma "no-cache"
+</IfModule>

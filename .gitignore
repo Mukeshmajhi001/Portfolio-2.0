@@ -1,0 +1,48 @@
+# ==============================
+# Portfolio 2.0 — .gitignore
+# ==============================
+
+# ---- Uploaded Project Images (user data - never commit) ----
+uploads/*
+!uploads/.htaccess
+!uploads/.gitkeep
+
+# ---- Installer & Lock File (delete after setup) ----
+install.php
+.installed
+
+# ---- Environment / Credentials (if moved to .env) ----
+.env
+.env.local
+.env.production
+.env.staging
+
+# ---- OS Files ----
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ---- IDE / Editor ----
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+nbproject/
+*.swp
+*.swo
+*~
+
+# ---- PHP / Composer ----
+vendor/
+composer.lock
+
+# ---- Logs & Cache ----
+*.log
+error_log
+php_errors.log
+*.tmp
+*.cache
+/tmp/
