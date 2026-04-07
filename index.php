@@ -36,6 +36,7 @@ $siteDesc  = "Creative full stack developer crafting modern web experiences with
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -353,7 +354,9 @@ $siteDesc  = "Creative full stack developer crafting modern web experiences with
 
   <div class="about-grid">
     <div class="about-img-wrap reveal left">
-      <div class="about-img">Mks-75</div>
+      <div class="about-img-ring">
+        <img src="assets/images/profile2.jpg" alt="Mukesh Majhi" class="about-img">
+      </div>
     </div>
     <div class="about-text">
       <h3 class="reveal">Passionate Developer &amp; Creative Thinker</h3>
@@ -464,29 +467,74 @@ $siteDesc  = "Creative full stack developer crafting modern web experiences with
       </div>
     </div>
 
-    <div class="contact-form-wrap reveal right">
-      <div class="form-feedback"></div>
-      <form id="contact-form" novalidate>
-        <input type="hidden" name="csrf_token" value="<?= e($csrf) ?>">
-        <div class="form-group">
-          <label class="form-label" for="name">Your Name *</label>
-          <input class="form-control" type="text" id="name" name="name" placeholder="John Doe" autocomplete="name">
-          <div class="field-error" id="name-error"></div>
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="email">Email Address *</label>
-          <input class="form-control" type="email" id="email" name="email" placeholder="john@example.com" autocomplete="email">
-          <div class="field-error" id="email-error"></div>
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="message">Message *</label>
-          <textarea class="form-control" id="message" name="message" rows="5" placeholder="Tell me about your project…"></textarea>
-          <div class="field-error" id="message-error"></div>
-        </div>
-        <button type="submit" class="btn btn-primary w-full" style="justify-content:center;">
-          <i class="fas fa-paper-plane"></i> Send Message
-        </button>
-      </form>
+     <body>
+<div class="form-container">
+  <div class="form-header">
+    <h1>
+      <i class="fas fa-paper-plane"></i> 
+      Get in touch
+    </h1>
+    <p>We’d love to hear from you — send a message and we’ll respond promptly.</p>
+  </div>
+
+  <div class="form-body">
+    <!-- 
+      Web3Forms form with provided access key
+      Fixed size message box with scroll, no auto-grow
+    -->
+    <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+      <!-- Hidden access key as provided -->
+      <input type="hidden" name="access_key" value="889736b0-067d-47b8-9f3f-2613c4b8a3b5">
+      
+      <!-- Disable redirect to handle via fetch -->
+      <input type="hidden" name="redirect" value="false">
+      
+      <!-- Name field -->
+      <div class="input-group">
+        <label>
+          <i class="fas fa-user"></i> Full name 
+          <span class="required-star">*</span>
+        </label>
+        <input type="text" name="name" id="name" placeholder="e.g. Ramesh Sharma" required>
+      </div>
+
+      <!-- Email field -->
+      <div class="input-group">
+        <label>
+          <i class="fas fa-envelope"></i> Email address 
+          <span class="required-star">*</span>
+        </label>
+        <input type="email" name="email" id="email" placeholder="hello@example.com" required>
+      </div>
+
+      <!-- Message textarea - FIXED SIZE with SCROLL -->
+      <div class="input-group">
+        <label>
+          <i class="fas fa-comment-dots"></i> Your message 
+          <span class="required-star">*</span>
+        </label>
+        <textarea name="message" id="message" placeholder="Write your thoughts, questions, or feedback here... (Fixed size box - scroll to see more text)" required></textarea>
+        
+      </div>
+
+      <!-- Honeypot spam protection -->
+      <input type="checkbox" name="botcheck" class="hidden" style="display: none;" tabindex="-1" autocomplete="off">
+
+      <button type="submit" class="submit-btn" id="submitBtn">
+        <span>Submit Form</span>
+        <i class="fas fa-arrow-right"></i>
+      </button>
+    </form>
+
+    <!-- Status message container -->
+    <div id="formStatus" class="status-message hidden"></div>
+    
+    <div class="secure-note">
+      <i class="fas fa-lock"></i>
+      <span>Your information is secure · Powered by Web3Forms</span>
+    </div>
+  </div>
+</div>
     </div>
   </div>
 </section>
@@ -502,5 +550,6 @@ $siteDesc  = "Creative full stack developer crafting modern web experiences with
 <button id="scroll-top" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
 
 <script src="assets/js/main.js"></script>
+<script src="contact.js"></script>
 </body>
 </html>

@@ -1,0 +1,211 @@
+    .form-container {
+      max-width: 620px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 2rem;
+      box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.25), 0 4px 12px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .form-container:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 30px 55px -14px rgba(0, 0, 0, 0.3);
+    }
+
+    /* header section */
+    .form-header {
+      background: #0f172a;
+      padding: 1.8rem 2rem;
+      color: white;
+    }
+
+    .form-header h1 {
+      font-size: 1.9rem;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .form-header h1 i {
+      font-size: 2rem;
+      color: #38bdf8;
+    }
+
+    .form-header p {
+      font-size: 0.95rem;
+      opacity: 0.85;
+      margin-top: 0.5rem;
+      font-weight: 400;
+      border-left: 3px solid #38bdf8;
+      padding-left: 0.8rem;
+    }
+
+    /* form body */
+    .form-body {
+      padding: 2rem 2rem 2.2rem;
+    }
+
+    /* input group styles */
+    .input-group {
+      margin-bottom: 1.6rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .input-group label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #1e293b;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .input-group label i {
+      color: #3b82f6;
+      font-size: 0.9rem;
+      width: 1.2rem;
+    }
+
+    .input-group label .required-star {
+      color: #ef4444;
+      font-size: 1rem;
+      margin-left: 2px;
+    }
+
+    input, textarea {
+      font-family: 'Inter', sans-serif;
+      width: 100%;
+      padding: 0.9rem 1rem;
+      font-size: 1rem;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 1rem;
+      background-color: #fefefe;
+      transition: all 0.2s ease;
+      outline: none;
+      color: #0f172a;
+      font-weight: 500;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+      background-color: #ffffff;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    /* submit button */
+    .submit-btn {
+      background: #0f172a;
+      color: white;
+      border: none;
+      width: 100%;
+      padding: 1rem 1.5rem;
+      font-size: 1.05rem;
+      font-weight: 600;
+      border-radius: 1.5rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 0.8rem;
+      box-shadow: 0 6px 14px rgba(15, 23, 42, 0.2);
+    }
+
+    .submit-btn i {
+      font-size: 1.2rem;
+      transition: transform 0.2s;
+    }
+
+    .submit-btn:hover {
+      background: #1e293b;
+      transform: scale(0.98);
+      box-shadow: 0 4px 10px rgba(15, 23, 42, 0.25);
+    }
+
+    .submit-btn:hover i {
+      transform: translateX(4px);
+    }
+
+    .submit-btn:active {
+      transform: scale(0.97);
+    }
+
+    /* status message (success / error) */
+    .status-message {
+      margin-top: 1.5rem;
+      padding: 0.9rem 1rem;
+      border-radius: 1rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #f1f5f9;
+      border-left: 5px solid;
+      transition: all 0.2s;
+    }
+
+    .status-success {
+      background: #e6f7ec;
+      border-left-color: #10b981;
+      color: #065f46;
+    }
+
+    .status-error {
+      background: #fee9e6;
+      border-left-color: #f97316;
+      color: #9b2c1d;
+    }
+
+    .status-loading {
+      background: #eef2ff;
+      border-left-color: #3b82f6;
+      color: #1e3a8a;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* footer note */
+    .secure-note {
+      margin-top: 1.2rem;
+      text-align: center;
+      font-size: 0.75rem;
+      color: #5b6e8c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-top: 1px solid #e9edf2;
+      padding-top: 1.2rem;
+    }
+
+    .secure-note i {
+      color: #3b82f6;
+    }
+
+    @media (max-width: 500px) {
+      .form-body {
+        padding: 1.5rem;
+      }
+      .form-header h1 {
+        font-size: 1.5rem;
+      }
+      .form-header {
+        padding: 1.3rem 1.5rem;
+      }
+    }
